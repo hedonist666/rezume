@@ -22,15 +22,22 @@ void join(const vector<int>& from, vector<int>& to) {
   size_t j{};
 
   for (size_t i{}; i < to.size(); ++i) {
-    if (from[j] < to[i]) {
+    if (!n.empty()) {
+      if (from[j] < to[i] && from[j] < n.front()) {
+        n.push_back(to[i]);
+        to[i] = from[j];
+        ++j;
+      }
+      else if (n.front() < to[i]) {
+        n.push_back(to[i]); 
+        to[i] = n.front();
+        n.pop_front();
+      }
+    }
+    else if (from[j] < to[i]) {
       n.push_back(to[i]);
       to[i] = from[j];
       ++j;
-    }
-    if (!n.empty() && n.front() < to[i]) {
-      n.push_back(to[i]); 
-      to[i] = n.front();
-      n.pop_front();
     }
   }
 

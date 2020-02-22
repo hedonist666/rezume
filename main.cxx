@@ -2,18 +2,15 @@
 
 
 int main() {
-  vector<int> to (SIZE);
-  vector<int> from (SIZE);
-
-  iota(to.begin(), to.end(), SIZE);
-  iota(from.begin(), from.end(), 0);
+  vector<int> to {2, 5, 9, 11};
+  vector<int> from {1, 2, 3, 5, 30};
 
   join(from, to);
-/*
+
   for (auto e : to) {
     cout << e << ' ';
   }
   cout << endl;
-*/
+
   return 0;
 }
